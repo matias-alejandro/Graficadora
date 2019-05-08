@@ -19,6 +19,4 @@ class Punto : public sf::CircleShape
 		bool isGraficoListo;
 		int contador;
 };
-
-
 #endif

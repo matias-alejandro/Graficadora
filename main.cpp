@@ -1,9 +1,10 @@
 #include <SFML/Graphics.hpp>
 
 #include "punto.hpp"
+#include "ejes.hpp"
 /****************************************************************/
-#define anchoP 200
-#define altoP 200
+#define anchoP 201
+#define altoP 201
 
 /****************************************************************/
 int main(int argc, char const *argv[])
@@ -15,12 +16,17 @@ int main(int argc, char const *argv[])
 	ventana.setMouseCursorVisible(false);
 
 	Punto punto;
+	Ejes ejes;
 	punto.graficar();
 
 	while(ventana.isOpen())
 	{
+		ejes.actualizar();
 		punto.actualizar();
+
 		ventana.draw(punto);
+		ventana.draw(ejes);
+
 		ventana.display();
 
 		while(ventana.pollEvent(evento))

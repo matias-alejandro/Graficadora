@@ -1,7 +1,7 @@
 #Makefile
 
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-OBJS = main.o punto.o
+OBJS = main.o punto.o ejes.o
 
 all: Graficadora
 

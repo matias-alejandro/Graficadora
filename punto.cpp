@@ -19,16 +19,8 @@ Punto::Punto() : sf::CircleShape()
 /****************************************************************/
 void Punto::graficar()
 {
-	if(contador==0)
-	{
 		//Y=(X-10)**2 //ejemplo
 		this->setPosition(this->contador, -(pow(this->contador-10, 2.0))+100);
-	}
-	else if(contador >= 20)
-	{
-		this->isGraficoListo=true;
-	}
-	this->mover(this->contador, -(pow(this->contador-10, 2.0))+100);
 }
 /****************************************************************/
 void Punto::actualizar()
@@ -36,10 +28,22 @@ void Punto::actualizar()
 	if(this->isGraficoListo)
 		return;
 
+	if(this->posicionI.x > 201 || this->posicionI.x < 0) //201 es ancho pantalla
+	{
+		this->isGraficoListo=true;
+		return;
+	}
+
+	if(this->posicionI.y > 201 || this->posicionI.y < 0) //201 es alto pantalla
+	{
+		this->isGraficoListo=true;
+		return;
+	}
+
 	if(this->velocidad.x == 0 && this->velocidad.y == 0)
 	{
 		this->contador++;
-		this->graficar();
+		this->mover(this->contador, -(pow(this->contador-10, 2.0))+100);
 	}
 
 	if(this->posicionI.x == this->posicionF.x)
